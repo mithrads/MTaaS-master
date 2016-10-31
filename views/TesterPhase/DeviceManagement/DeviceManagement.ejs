@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<% include ../Partials/TesterStyles %>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+       <% include ../Partials/TesterNavBars %>
+
+        <div id="page-wrapper" style="height:700px !important;">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Device Management
+                           
+                        </h1>
+                       
+                    </div>
+                </div>
+                <!-- /.row -->
+				
+							
+				<div class="row" style="float:right;margin-right: 10%;">
+				    <div class="col-lg-6"><button type="button" class="btn btn-primary" id="addDeviceBtn">Add Device</button></div>
+				</div>
+				<div class="row">
+				<div class="col-lg-12">
+				<div class="table-responsive" style="margin-top: 2%;">
+                            <table class="table table-bordered table-hover" style="width: 75%;margin-left: 5%;">
+                                <thead>
+                                    <tr>
+                                        <th>Device Name</th>
+                                        <th>View Device</th>
+                                        
+						             </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Galaxy Nexus 6</td>
+                                        <td style="width:12%">
+										<button type="button" class="btn btn-primary" id="viewDevice1Btn">View Device</button>
+										</td>
+                                        
+                                    </tr>
+									 <tr>
+                                        <td>Iphone 5s</td>
+                                        <td>
+										<button type="button" class="btn btn-primary" id="viewDevice2Btn">View Device</button>
+										</td>
+                                       
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+							</div>
+                        </div>
+				</div>
+				
+					
+                </div>
+				</div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+	<!-- Add Device PopUp -->
+	<div id="addDeviceModal" class="modal fade addDeviceModal" role="dialog" >
+		<div class="modal-dialog">
+
+    <!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header addDeviceModalHeader">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Add Device</h4>
+				</div>
+			<div class="modal-body" style="overflow-y:auto;">
+                	<div class="col-lg-3">
+
+                        <form role="form">
+			
+                            <div class="form-group">
+							    <label class="popupAddDeviceLabel">Device Name:</label>
+                            </div>
+							 <div class="form-group">
+                                <label class="popupAddDeviceLabel">OS:</label>
+                             </div>
+							 <div class="form-group">
+                                <label class="popupAddDeviceLabel">Version:</label>
+                             </div>
+							 <div class="form-group">
+                                <label class="popupAddDeviceLabel">PROC SPD:</label>
+                             </div>
+							<div class="form-group">
+                                <label class="popupAddDeviceLabel">CON Type:</label>
+                             </div>
+							 <div class="form-group">
+                                <label class="popupAddDeviceLabel">RAM:</label>
+                             </div>
+							 <div class="form-group">
+                                <label class="popupAddDeviceLabel">Battery:</label>
+                             </div>
+							
+						</form>
+					</div>
+					<div class="col-lg-6">
+
+                        <form role="form">
+			
+                            <div class="form-group">
+							   <input class="form-control">
+							</div>
+							<div class="form-group">
+							    <input class="form-control">
+							</div>
+							<div class="form-group">
+							    <input class="form-control">
+							</div>
+							<div class="form-group" id="procSPDTxt">
+							    <input class="form-control">
+								 
+							</div>
+							<div class="form-group">
+							    <input class="form-control">
+							</div>
+							<div class="form-group">
+							    <input class="form-control">
+							</div>
+							<div class="form-group">
+							    <input class="form-control">
+							</div>
+							 
+						</form>
+				</div>
+					<div class="col-lg-2">
+
+                        <form role="form">
+			
+                            <div class="form-group" style="margin-top:242%;">
+							   <lable>GHz</label>
+							</div>
+							<div class="form-group" style="margin-top:118%;">
+							    <lable>MB</label>
+							</div>
+							<div class="form-group" style="margin-top:40%;">
+							   <lable>mAh</label>
+							</div>
+							
+							 
+						</form>
+					</div>
+			</div>
+		<div class="modal-footer">
+		    <button type="button" class="btn btn-primary" id="addDeviceSubmitBtn">Add</button>
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+		</div>
+    </div>
+
+  </div>
+</div>
+	<!-- /Add Device PopUp -->
+	<!-- Device Details PopUp -->
+	<div id="deviceDetailsModal" class="modal fade deviceDetailsModal" role="dialog" >
+		<div class="modal-dialog">
+
+    <!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header deviceDetailsModalHeader">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Device Detail</h4>
+				</div>
+			<div class="modal-body" style="overflow-y:auto;">
+                	<div class="col-lg-6">
+
+                        <form role="form">
+			
+                            <div class="form-group">
+							    <label class="">Name:</label>
+                            </div>
+							 <div class="form-group">
+                                <label class="">OS:</label>
+                             </div>
+							 <div class="form-group">
+                                <label class="">Version:</label>
+                             </div>
+							 <div class="form-group">
+                                <label class="">Processor SPD:</label>
+                             </div>
+							<div class="form-group">
+                                <label class="">RAM:</label>
+                             </div>
+							 <div class="form-group">
+                                <label class="">Battery:</label>
+                             </div>
+							 <div class="form-group">
+                                <label class="">CON Type:</label>
+                             </div>
+							 
+						</form>
+					</div>
+					<div class="col-lg-6">
+
+                        <form role="form">
+			
+                             <div class="form-group">
+							    <label class="">Device 1</label>
+                            </div>
+							 <div class="form-group">
+                                <label class="">ios</label>
+                             </div>
+							 <div class="form-group">
+                                <label class="">1.2.3</label>
+                             </div>
+							 <div class="form-group">
+                                <label class="">10</label>
+                             </div>
+							<div class="form-group">
+                                <label class="">2</label>
+                             </div>
+							 <div class="form-group">
+                                <label class="">10</label>
+                             </div>
+							 <div class="form-group">
+                                <label class="">10101010</label>
+                             </div>
+						</form>
+				</div>
+			
+			</div>
+		
+    </div>
+
+  </div>
+</div>
+	<!-- /Device Details PopUp -->
+    <!-- jQuery -->
+    <script src="/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="/js/plugins/morris/raphael.min.js"></script>
+    <script src="/js/plugins/morris/morris.min.js"></script>
+    <script src="/js/plugins/morris/morris-data.js"></script>
+	<script src="/js/jquery-1.9.1.min.js"></script>
+	 <script src="/js/jquery-1.11.3.min.js"></script>
+	 <script src="/js/bootstrap-3.3.5.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("#addDeviceBtn").click(function(){
+			
+			$("#addDeviceModal").modal();
+		});
+		$("#viewDevice1Btn").click(function(){
+			
+			$("#deviceDetailsModal").modal();
+		});
+		
+		
+	});
+	</script>
+
+</body>
+
+</html>

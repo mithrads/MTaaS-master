@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<% include ../Partials/AdminStyles %>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+       <% include ../Partials/AdminNavBars %>
+
+        <div id="page-wrapper" style="height:700px !important;">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Approve Project
+                           
+                        </h1>
+                       
+                    </div>
+                </div>
+                <!-- /.row -->
+				</div>
+				<div class="row">
+				<div class="col-lg-12">
+				<div class="table-responsive" style="margin-top: 2%;">
+                            <table class="table table-bordered table-hover" style="width: 75%;margin-left: 5%;">
+                                <thead>
+                                    <tr>
+                                        <th>Project Name</th>
+                                       	<th>Details</th>
+									</tr>
+                                </thead>
+                                <tbody>
+                                <%projs.forEach(function(proj){%>  
+                                    <tr>
+                                        <td><%=proj.proj_name%></td>
+										<td style="width:12%">
+										<button type="button" class="btn btn-primary" id="projectDetails1Btn">Details</button>
+										</td>
+                                        <td style="width:12%">
+                                        <form method="get" action="/Admin/ApproveProject">
+                                        <input type="hidden" name="proj_id" value="<%=proj.proj_id%>">
+                                        <input type="hidden" name="sourcepg" value="approv">
+                                        <input type="submit" class="btn btn-primary" value="Approve">
+                                        </form>
+                                        </td>
+                                        
+								    </tr>
+                                <%});%>
+                                </tbody>
+                            </table>
+							</div>
+                        </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+<!-- Project Details PopUp -->
+	<div id="projectDetailsModal" class="modal fade projectDetailsModal" role="dialog" >
+		<div class="modal-dialog">
+
+    <!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header projectDetailsModalHeader">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Project Detail</h4>
+				</div>
+			<div class="modal-body" style="overflow-y:auto;">
+                	<div class="col-lg-6">
+
+                        <form role="form">
+			
+                            <div class="form-group">
+							    <label class="">Project Name:</label>
+                            </div>
+							 <div class="form-group">
+                                <label class="">Description:</label>
+                             </div>
+							 <div class="form-group">
+                                <label class="">No. Of Pending DEV:</label>
+                             </div>
+							 <div class="form-group">
+                                <label class="">Deadline:</label>
+                             </div>
+							<div class="form-group">
+                                <label class="">Award/Bug:</label>
+                             </div>
+							
+							 
+						</form>
+					</div>
+					<div class="col-lg-6">
+                    <%var i=0; projs.forEach(function(proj){i++;if(i==1){%>  
+                        <form role="form">
+			                 
+                             <div class="form-group">
+							    <label class=""><%=proj.proj_name%></label>
+                            </div>
+							 <div class="form-group">
+                                <label class=""><%=proj.proj_desc%></label>
+                             </div>
+							 <div class="form-group">
+                                <label class=""><%=proj.no_tested_dev%></label>
+                             </div>
+							 <div class="form-group">
+                                <label class=""><%=proj.deadline%></label>
+                             </div>
+							<div class="form-group">
+                                <label class=""><%=proj.award_per_bug%></label>
+                            </div>
+							 
+						</form>
+                         <%}});%>
+				</div>
+			
+			</div>
+		
+    </div>
+
+  </div>
+</div>
+	<!-- /Device Details PopUp -->
+    <!-- jQuery -->
+    <script src="/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="/js/plugins/morris/raphael.min.js"></script>
+    <script src="/js/plugins/morris/morris.min.js"></script>
+    <script src="/js/plugins/morris/morris-data.js"></script>
+	<script src="/js/jquery-1.9.1.min.js"></script>
+	<script src="/js/jquery-1.11.3.min.js"></script>
+	<script src="/js/bootstrap-3.3.5.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("#projectDetails1Btn").click(function(){
+			
+			$("#projectDetailsModal").modal();
+		});
+        $("#projectDetails2Btn").click(function(){
+            
+            $("#projectDetailsModal").modal();
+        });
+		
+	});
+	</script>
+
+</body>
+
+</html>

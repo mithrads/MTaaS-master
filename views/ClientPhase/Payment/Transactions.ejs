@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<% include ../Partials/ClientStyles %>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+       <% include ../Partials/ClientNavBars %>
+
+        <div id="page-wrapper" style="height:700px !important;">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Payment
+                            <small>Transactions</small>
+                        </h1>
+                        
+                    </div>
+                </div>
+                <!-- /.row -->
+				<div class="row">
+				 <div class="col-lg-12">
+				 <button type="button" class="btn btn-primary" id="enCashTransactionsBtn" style="float:right;">Encash</button>
+				 <button type="button" class="btn btn-primary" id="payNowTransactionsBtn" style="float:right;margin-right: 2%;">Pay Now</button>
+				 
+				 </div>
+				
+				</div>
+				<div class="row" style="margin-top:2%;">
+				<div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Description</th>
+                                        <th>Date</th>
+                                        <th>Inflow $</th>
+                                        <th>Outflow $</th>
+										<th>Balance $</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                 <% trans.forEach(function(tran) { %>  
+                                         <tr>
+                                        <td><%=tran.desc%></td>
+                                        <td><%=tran.date%></td>
+                                        <%if(tran.trans_amnt>0){%>
+                                        	<td>0</td>
+                                        <td><%=tran.trans_amnt%></td>
+                                        
+                                        <%}else{%>
+                                        	
+                                        <td><%=-tran.trans_amnt%></td>
+                                        <td>0</td>
+                                        <%}%>
+                                        <td><%=tran.balance%></td>
+                                    	</tr>
+                                   <% }); %>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+				</div>
+				
+				</div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+	<!-- Pay Now PopUp -->
+	<div id="payNowTransactionModal" class="modal fade payNowTransactionModal" role="dialog" >
+		<div class="modal-dialog">
+
+    <!-- Modal content-->
+			<div class="modal-content">
+			
+				<div class="modal-header payNowTransactionModalHeader">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Pay Now</h4>
+				</div>
+			<div class="modal-body" style="overflow-y:auto;">
+                	<div class="col-lg-3">
+
+                        <form role="form">
+			
+                            <div class="form-group">
+							    <label class="popupAddDeviceLabel">Card Type:</label>
+                            </div>
+							 <div class="form-group">
+                                <label class="popupAddDeviceLabel">Account No:</label>
+                             </div>
+							 <div class="form-group">
+                                <label class="popupAddDeviceLabel">CVV No:</label>
+                             </div>
+							 <div class="form-group">
+                                <label class="popupAddDeviceLabel">Amount:</label>
+                             </div>
+							
+							
+						</form>
+					</div>
+					<div class="col-lg-6">
+
+                        <form role="form" action="/Cli_PayNow" method="post">
+			
+                            <div class="form-group">
+							   <input class="form-control">
+							</div>
+							<div class="form-group">
+							    <input class="form-control" name="accn_no">
+							</div>
+							<div class="form-group">
+							    <input class="form-control" style="width:30%;">
+							</div>
+							<div class="form-group" style="color:red;">
+							    <div class="form-group input-group">
+                                <span class="input-group-addon">$</span>
+                                <input type="text" class="form-control" name="amnt">
+                                <span class="input-group-addon">.00</span>
+                                <input type="hidden" name="source" value="pay_popup">
+								</div>
+							</div><br/><br/>
+							<div class="form-group">
+							    <input class="btn btn-primary" id="payTransactionSubmitBtn" type="submit" value="Pay">
+							    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+							</div>
+							
+						</form>
+				</div>
+			
+			</div>
+		
+    </div>
+
+  </div>
+</div>
+	<!-- /Pay Now PopUp -->
+	
+	<!-- Encash PopUp -->
+	<div id="encashTransactionModal" class="modal fade encashTransactionModal" role="dialog" >
+		<div class="modal-dialog">
+
+    <!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header encashTransactionModalHeader">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Encash</h4>
+				</div>
+			<div class="modal-body" style="overflow-y:auto;">
+                	<div class="col-lg-3">
+
+                        <form role="form">
+			
+                            <div class="form-group">
+							    <label class="popupAddDeviceLabel">Account No:</label>
+                            </div>
+							 <div class="form-group">
+                                <label class="popupAddDeviceLabel">Routing No:</label>
+                             </div>
+							 <div class="form-group">
+                                <label class="popupAddDeviceLabel">Amount:</label>
+                             </div>
+							 <div class="form-group">
+                                <label class="popupAddDeviceLabel">Description:</label>
+                             </div>
+							
+							
+						</form>
+					</div>
+					<div class="col-lg-6">
+
+                        <form role="form" action="/Cli_Encash" method="post">
+			
+                            <div class="form-group">
+							   <input class="form-control" name="enc_accnno">
+							</div>
+							<div class="form-group">
+							    <input class="form-control" name="enc_routing">
+							</div>
+							<div class="form-group">
+							   <div class="form-group input-group">
+                                <span class="input-group-addon">$</span>
+                                <input type="text" class="form-control" name="enc_amnt">
+                                <span class="input-group-addon">.00</span>
+								</div>
+							</div>
+							<div class="form-group">
+							    <input class="form-control" name="enc_des">
+							</div>
+							<div class="modal-footer">
+								<input class="btn btn-primary" id="encashTransactionSubmitBtn" type="submit" value="Encash">
+		    					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+							</div>
+							
+						</form>
+				</div>
+			
+			</div>
+		
+    </div>
+
+  </div>
+</div>
+	<!-- /Encash PopUp -->
+	
+	
+	
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="js/plugins/morris/raphael.min.js"></script>
+    <script src="js/plugins/morris/morris.min.js"></script>
+    <script src="js/plugins/morris/morris-data.js"></script>
+	
+	 <script src="js/jquery-1.9.1.min.js"></script>
+	  <script src="js/jquery-1.11.3.min.js"></script>
+	   <script src="js/bootstrap-3.3.5.min.js"></script>
+	
+	<script>
+	$(document).ready(function(){
+		$("#payNowTransactionsBtn").click(function(){
+			
+			$("#payNowTransactionModal").modal();
+		});
+		$("#enCashTransactionsBtn").click(function(){
+			
+			$("#encashTransactionModal").modal();
+		});
+		
+		
+	});
+	</script>
+
+</body>
+
+</html>

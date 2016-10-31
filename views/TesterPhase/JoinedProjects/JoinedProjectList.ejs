@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<% include ../Partials/TesterStyles %>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+       <% include ../Partials/TesterNavBars %>
+
+        <div id="page-wrapper" style="height:700px !important;">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Joined Projects                         
+                        </h1>
+                       
+                    </div>
+                </div>
+                <!-- /.row -->
+				
+				<div class="row">
+				<div class="col-lg-12">
+				<div class="table-responsive" style="margin-top: 2%;">
+                            <table class="table table-bordered table-hover" style="width: 75%;margin-left: 5%;">
+                                <thead>
+                                    <tr>
+                                        <th>Project Name</th>
+                                        <th>Edit</th>
+                                        
+						             </tr>
+                                </thead>
+                                <tbody>
+                                <%projs.forEach(function(proj){%>  
+                                    <tr>
+                                        <td><%=proj%></td>
+                                        <td style="width:12%">
+                                        <span class="glyphicon glyphicon-pencil" id="projectEdit1" name="<%=proj%>"></span>
+                                        </td>
+                                        
+                                    </tr>
+                                    <%});%>
+                                   
+                                </tbody>
+                            </table>
+							</div>
+                        </div>
+				</div>
+				
+					
+                </div>
+				</div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="/js/plugins/morris/raphael.min.js"></script>
+    <script src="/js/plugins/morris/morris.min.js"></script>
+    <script src="/js/plugins/morris/morris-data.js"></script>
+	<script src="/js/jquery-1.9.1.min.js"></script>
+	<script src="/js/jquery-1.11.3.min.js"></script>
+	<script src="/js/bootstrap-3.3.5.min.js"></script>
+
+	<script>
+	$(document).ready(function(){
+		$("#projectEdit1").click(function(){
+			window.location.href = "/TesterPhase/ProjectMan";
+		});	
+	});
+	</script>
+
+</body>
+
+</html>

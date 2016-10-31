@@ -1,0 +1,51 @@
+.replyAnnounce{
+	background-color:#CCCCCC;
+}
+.outerAnnounce{
+	overflow-y:auto;
+    height: 200px;
+}
+.innerAnnounce{
+	 position:relative; 
+	 z-index:1;
+}
+.headerReply{
+	width:100%;
+}
+.headerNameReply{
+	position:absolute;
+	flot:left;
+	font-weight: bold;
+}
+.headerTimeReply{
+	text-align:right;
+	flot:left;
+	font-weight: bold;
+}
+.replyModal{
+	top:30% !important;
+}
+.pendingDeviceModal{
+	top:30% !important;
+}
+.completedDeviceModal{
+	top:30% !important;
+}
+.payNowModal{
+	top:15% !important;
+}
+.payNowTransactionModal{
+	top:15% !important;
+}
+.encashTransactionModal{
+	top:15% !important;
+}
+.formLabel{
+	margin-top:4%;
+}
+.popupAddDeviceLabel{
+	margin-top:8%;
+}
+.bugsBtns{
+	margin-top:-2%;margin-bottom:4%;margin-left:60%
+}

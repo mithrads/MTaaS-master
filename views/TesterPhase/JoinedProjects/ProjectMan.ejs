@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<% include ../Partials/TesterStyles %>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+       <% include ../Partials/TesterNavBars %>
+
+        <div id="page-wrapper" style="height:700px !important;">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Joined Projects     
+								<small>Project Man</small>
+                        </h1>
+                       
+                    </div>
+                </div>
+                <!-- /.row -->
+				
+				<div class="row">
+				<% include ../Partials/JoinedProjectsNavBars %>
+				</div>
+							
+				<div class="row" style="float:right;margin-right: 10%;">
+				    <div class="col-lg-6"><button type="button" class="btn btn-primary" id="backToJoinedProjectsBtn">Back</button></div>
+				</div>
+				<div class="row"  style="margin-top:3%;margin-left:3%">
+					<div class="col-lg-3">
+
+                        <form role="form">
+			
+                            <div class="form-group">
+							    <label>Status:</label>
+                            </div>
+							 <div class="form-group">
+                                <label>Bugs Reported:</label>
+                             </div>
+							 <div class="form-group">
+                                <label>Bugs Approved:</label>
+                             </div>
+									
+						</form>
+					</div>	
+					<div class="col-lg-3">
+
+                        <form role="form">
+							
+                            <div class="form-group">
+							    <label><%=status_now%></label>
+                            </div>
+                            
+                             <div class="form-group">
+                                <label><%=reportd%></label>
+                             </div>
+							 <div class="form-group">
+                                <label><%=approv%></label>
+                             </div>
+												 					
+						</form>
+					</div>	
+				</div>
+				<div class="row" style="margin-top: 5%;">
+                    <div class="col-lg-6">
+                        <button type="button" class="btn btn-primary" id="dropProjectBtn" style="float:right;">Drop Project</button>
+                       
+					</div>
+					 <div class="col-lg-6">
+                       <button type="button" class="btn btn-primary" id="feedbackBtn">Give Feedback</button>
+					</div>
+                       
+					</div>
+				
+				
+				
+				
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+	
+	<!-- Drop Project PopUp -->
+	<div id="dropProjectModal" class="modal fade dropProjectModal" role="dialog" >
+		<div class="modal-dialog">
+
+    <!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header dropProjectModalHeader">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Drop Project</h4>
+				</div>
+
+				<form role="form" method="get" action="/TesterPhase/ProjectMan">
+
+			<div class="modal-body">
+                
+				
+					<div class="form-group">
+					<label>Reason for drop:</label>
+                         <textarea class="form-control" rows="3" name="reasons"></textarea>
+                    </div>
+                    <input type="hidden" value="reason" class="btn btn-primary" name="sourcepg"></input>
+                    
+				
+			</div>
+		<div class="modal-footer">
+		    <input type="submit" value="Confirm" class="btn btn-primary" id="confirmSubmitBtn"></input>
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+		</div>
+
+		</form>
+
+    </div>
+
+  </div>
+</div>
+	<!-- /Drop Project PopUp -->
+	
+	
+	
+    <!-- jQuery -->
+    <script src="/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="/js/plugins/morris/raphael.min.js"></script>
+    <script src="/js/plugins/morris/morris.min.js"></script>
+    <script src="/js/plugins/morris/morris-data.js"></script>
+	<script src="/js/jquery-1.9.1.min.js"></script>
+	 <script src="/js/jquery-1.11.3.min.js"></script>
+	 <script src="/js/bootstrap-3.3.5.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$(document).ready(function(){
+		$("#dropProjectBtn").click(function(){
+		   $("#dropProjectModal").modal();
+		});
+		$("#backToJoinedProjectsBtn").click(function(){
+			window.location.href = "/TesterPhase/JoinedProjects";
+		});
+		
+		});
+	});
+	</script>
+
+</body>
+
+</html>

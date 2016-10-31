@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<% include ../Partials/ClientStyles %>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+       <% include ../Partials/ClientNavBars %>
+
+        <div id="page-wrapper" style="height:700px !important;">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Create Project 
+                            <small>Project Specific</small>
+                        </h1>
+                       
+                    </div>
+                </div>
+                <!-- /.row -->
+				</div>
+				<div class="row">
+				<% include ../Partials/CreateProjectNavBars %>
+				</div>
+				<div class="row" style="margin-left:1%;">
+					<div class="col-lg-3">
+
+                        <form role="form">
+			
+                            <div class="form-group">
+							    <label class="formLabel">Name:</label>
+                            </div>
+							 <div class="form-group">
+                                <label class="formLabel">URL/APP Location:</label>
+                             </div>
+							 <div class="form-group">
+                                <label class="formLabel">Deadline:</label>
+                             </div>
+							<div class="form-group">
+                                <label class="formLabel">Award/Bug:</label>
+                             </div>
+							 <div class="form-group">
+                                <label class="formLabel">Expectation From Tester:</label>
+                             </div>
+							
+						</form>
+					</div>	
+					<div class="col-lg-4">
+
+                        <form role="form" action="/Devices" method="post">
+			
+                            <div class="form-group">
+							    
+                               <input class="form-control" type="text" name="cre_name">
+                             
+                            </div>
+							 <div class="form-group">
+                                
+                              <input class="form-control" name="cre_url">
+                            </div>
+							 <div class="form-group">
+                                
+                               <input class="form-control" name="cre_dead">
+                            </div>
+							<div class="form-group">
+                                <div class="form-group input-group">
+                                <span class="input-group-addon">$</span>
+                                <input type="text" class="form-control" name="cre_award">
+                                <span class="input-group-addon">.00</span>
+								</div>
+                               
+							</div>
+							<div class="form-group">
+								<textarea class="form-control" rows="3" name="cre_expec"></textarea>
+                                <input type="hidden" name="cre_devices" value="">
+							</div>
+                            <div class="form-group">
+								<button type="submit" class="btn btn-primary" id="nextToDevicesBtn">Next</button>
+							</div>
+						</form>
+					</div>
+
+				</div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="js/plugins/morris/raphael.min.js"></script>
+    <script src="js/plugins/morris/morris.min.js"></script>
+    <script src="js/plugins/morris/morris-data.js"></script>
+
+</body>
+
+</html>

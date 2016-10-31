@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<% include ../Partials/ClientStyles %>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+       <% include ../Partials/ClientNavBars %>
+
+        <div id="page-wrapper" style="height:700px !important;">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">My Projects                          
+                        </h1>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+           
+                <%projs.forEach(function(proj){%>  
+                <div class="row">
+                    <div class="col-lg-3">
+                        <form role="form">
+                            <div class="form-group">
+                                <label><%=proj.proj_name%></label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-4">
+					<div class="progress">
+						<div class="progress-bar" role="progressbar" aria-valuenow="<%=(proj.no_tested_dev)*100/(proj.no_tested_dev+proj.no_pend_dev)%>" aria-valuemin="0" aria-valuemax="100" style="width: <%=(proj.no_tested_dev)*100/(proj.no_tested_dev+proj.no_pend_dev)%>%;">
+									<%=(proj.no_tested_dev)*100/(proj.no_tested_dev+proj.no_pend_dev)%>%
+						</div>
+					</div>
+                    </div>
+                    <div class="col-lg-4">
+                         <form role="form" method="get" action="/">
+                            <div class="form-group">
+                             
+                             <%if(proj.bugs)%>
+                                    
+
+                                <input type="hidden" name="proj_now" value="<%=proj.proj_id%>"></input>
+                                <input type="hidden" name="sourcepg" value="set_now"></input>
+                               <input type="submit" name="set" id="<%=proj.proj_id%>" value="<%="0"%>" class="btn btn-primary">
+                              
+                               <!-- <label>3</label> -->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                  <%});%>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="js/plugins/morris/raphael.min.js"></script>
+    <script src="js/plugins/morris/morris.min.js"></script>
+    <script src="js/plugins/morris/morris-data.js"></script>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	
+	<script>
+	$(document).ready(function(){
+	
+	});
+    </script>
+</script>
+</body>
+
+</html>

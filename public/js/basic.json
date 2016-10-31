@@ -1,0 +1,16 @@
+{
+	"total": 3,
+	"data" : [{
+		"firstName" : "Billy",
+		"lastName" : "Bob",
+		"emailAddress" : "billy@jqueryscript.net"
+	}, {
+		"firstName" : "Sally",
+		"lastName" : "Sue",
+		"emailAddress" : "sally@jqueryscript.net"
+	}, {
+		"firstName" : "jQuery",
+		"lastName" : "Script",
+		"emailAddress" : "jqeury@jqueryscript.net"
+	}]
+}

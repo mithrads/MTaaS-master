@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<% include ../Partials/AdminStyles %>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+       <% include ../Partials/AdminNavBars %>
+
+        <div id="page-wrapper" style="height:700px !important;">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Application Feedback
+                           
+                        </h1>
+                       
+                    </div>
+                </div>
+                <!-- /.row -->
+				</div>
+				<div class="row">
+				<% include ../Partials/FeedbackNavBars %>
+				</div>
+				<div class="row" style="margin-left:4%;">
+                    <div class="col-lg-8">
+						<div class="well well-sm replyAnnounce outerReply">
+							<div class="headerReply">
+							    <div class="headerNameReply">Parth Parmar</div>
+								<div class="headerTimeReply">6 months ago</div>
+							</div>
+							<div class="contentReply">
+								Let me answer my own question js/custom.js and change the mailchimp list link. Very nicely done. Thank you for the template!
+							</div>
+						
+						</div>
+						
+						<div class="well well-sm replyAnnounce outerReply">
+							<div class="headerReply">
+							    <div class="headerNameReply">John Smith</div>
+								<div class="headerTimeReply">8 months ago</div>
+							</div>
+							<div class="contentReply">
+								:D Thanks for purchasing the template. :)
+							</div>
+						
+						</div>
+						
+					</div>
+				</div>
+              </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="/js/plugins/morris/raphael.min.js"></script>
+    <script src="/js/plugins/morris/morris.min.js"></script>
+    <script src="/js/plugins/morris/morris-data.js"></script>
+	<script src="/js/jquery-1.9.1.min.js"></script>
+	<script src="/js/jquery-1.11.3.min.js"></script>
+	<script src="/js/bootstrap-3.3.5.min.js"></script>
+	
+	<script>
+	$(document).ready(function(){
+	
+	$('li.feedbackTabs').removeClass('active');
+	$('#feedbackTab1').addClass('active');
+	});
+	</script>
+	
+</body>
+
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<% include ../Partials/ClientStyles %>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+       <% include ../Partials/ClientNavBars %>
+
+        <div id="page-wrapper" style="height:700px !important;">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Create Project 
+                            <small>Expenditure</small>
+                        </h1>
+                       
+                    </div>
+                </div>
+                <!-- /.row -->
+				</div>
+				<div class="row">
+				<% include ../Partials/CreateProjectNavBars %>
+				</div>
+				<div class="row" style="margin-left:1%;">
+					<div class="col-lg-3">
+
+                        <form role="form">
+                         	    <label class="formLabel">Project Name:</label><br/>
+                                <label class="formLabel">URL/APP Location:</label><br/>
+                                <label class="formLabel">Deadline:</label><br/>
+                                <label class="formLabel">Expectation From Tester:</label><br/>
+                                <label class="formLabel">Available Credit:</label><br/>
+                                <label class="formLabel">No. Devices Selected:</label><br/>
+                                <label class="formLabel">Payment Plan:</label><br/>
+                                <label class="formLabel">Estimated Locked Credits:</label><br/>
+                               	<label class="formLabel">Coupan Code:</label><br/>
+						</form>
+					</div>	
+					<div class="col-lg-4">
+
+                        <form role="form" method="post" action="/Home">
+                              <label class="formLabel"><%=proj_name%></label><br/>
+                              <label class="formLabel"><%=location%></label><br/>
+                              <label class="formLabel"><%=deadline%></label><br/>
+                              <label class="formLabel"><%=proj_des%></label><br/>
+                              <label class="formLabel">$</label>
+							  <label class="formLabel"><%=avail_cred%></label><br/>
+                              <label class="formLabel"><%=dev_count%></label><br/>
+                              <table class="table table-bordered table-hover" style="width: 75%;margin-left: 5%;">
+                                <thead>
+                                    <tr>
+                                    	<th>Type</th>
+                                        <th>Lockage</th>
+                                        <th>Ant. Expense</th>
+						             </tr>
+                                </thead>
+                                <tbody>
+                                	<tr>
+                                        <td>Device</td>
+                                        <td>$5/device</td>
+                                        <td>No</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bug</td>
+                                        <td>No</td>
+                                        <td>$<%=award_per_bug%>/Bug</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Data</td>
+                                        <td>No</td>
+                                        <td>No</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                              <label class="formLabel">$</label>
+							  <label class="formLabel"><%=dev_count*5%>.00</label><br/>
+                              <input type="text" name="ccode" value=" "><br/>
+							  <input type="checkbox" name="terms" value=" ">
+							  <label>I agree to all terms and conditions specified.</label><br/>
+							
+							<div class="form-group">
+								<input type="hidden" name="source" value="Expenditure"></input>
+
+								<input type="hidden" name="proj_id" value=<%=proj_id%>></input>
+								<input type="hidden" name="locations" value=<%=location%>></input>
+								<input type="hidden" name="proj_name" value=<%=proj_name%>></input>
+								<input type="hidden" name="no_tested_dev" value=<%=no_tested_dev%>></input>
+								<input type="hidden" name="proj_des" value=<%=proj_des%>></input>
+								<input type="hidden" name="deadline" value=<%=deadline%>></input>
+								<input type="hidden" name="award_per_bug" value=<%=award_per_bug%>></input>
+								<input type="hidden" name="no_pend_dev" value=<%=no_pend_dev%>></input>
+								<input type="hidden" name="approved" value=<%=approved%>></input>
+								<input type="hidden" name="client" value=<%=client.user_id%>></input>
+								<input type="hidden" name="devices" value=<%=devices%>></input>
+								<input type="hidden" name="dev_count" value=<%=dev_count%>></input>
+								<input type="hidden" name="avail_cred" value=<%=avail_cred%>></input>
+								<input type="hidden" name="disc_cred" value=<%=disc_cred%>></input>
+								<%if(avail_cred-dev_count*5-disc_cred>0){%>
+								<input type="submit" class="btn btn-primary" id="confirmCreateProjBtn" value="Confirm"></input>
+								<%}else{%>
+								<label>You can't post this project as you don't have sufficient $</label>
+								<%}%>
+							</div>
+						</form>
+					</div>
+						<div class="col-lg-3">
+
+                        <form role="form">
+                            <div class="form-group" style="margin-top:53%;">
+							   <button type="button" class="btn btn-primary" id="applyCoupanBtn">Apply</button>
+							</div>
+						</form>
+					</div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+	<!-- Pay Now PopUp -->
+	<div id="payNowModal" class="modal fade payNowModal" role="dialog" >
+		<div class="modal-dialog">
+
+    <!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header payNowModalHeader">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Pay Now</h4>
+				</div>
+			<div class="modal-body" style="overflow-y:auto;">
+                	<div class="col-lg-3">
+
+                        <form role="form">
+			
+                            <div class="form-group">
+							    <label class="popupAddDeviceLabel">Card Type:</label>
+                            </div>
+							 <div class="form-group">
+                                <label class="popupAddDeviceLabel">Account No:</label>
+                             </div>
+							 <div class="form-group">
+                                <label class="popupAddDeviceLabel">CVV No:</label>
+                             </div>
+							 <div class="form-group">
+                                <label class="popupAddDeviceLabel">Amount:</label>
+                             </div>
+							
+							
+						</form>
+					</div>
+					<div class="col-lg-6">
+
+                        <form role="form">
+			
+                            <div class="form-group">
+							   <input class="form-control">
+							</div>
+							<div class="form-group">
+							    <input class="form-control">
+							</div>
+							<div class="form-group">
+							    <input class="form-control" style="width:30%;">
+							</div>
+							<div class="form-group" style="color:red;">
+							    <label>$</label>
+								<label>40.00</label>
+							</div>
+							
+						</form>
+				</div>
+			
+			</div>
+		<div class="modal-footer">
+		    <button type="button" class="btn btn-primary" id="paySubmitBtn">Pay</button>
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+		</div>
+    </div>
+
+  </div>
+</div>
+	<!-- /Pay Now PopUp -->
+	
+	
+	
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="js/plugins/morris/raphael.min.js"></script>
+    <script src="js/plugins/morris/morris.min.js"></script>
+    <script src="js/plugins/morris/morris-data.js"></script>
+	 <script src="js/jquery-1.9.1.min.js"></script>
+	 <script src="js/jquery-1.11.3.min.js"></script>
+	 <script src="js/bootstrap-3.3.5.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("#payNowBtn").click(function(){
+			
+			$("#payNowModal").modal();
+		});
+		
+		
+	});
+	</script>
+
+</body>
+
+</html>
